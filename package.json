@@ -1,0 +1,55 @@
+{
+  "name": "ismi-js-tools",
+  "version": "0.0.0",
+  "description": "some  function",
+  "main": "out/index.cjs",
+  "module": "out/index.mjs",
+  "type": "module",
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "b": "rollup --config  rollup.config.js    && tsc -p  tsconfig.types.json",
+    "build": "npx ismi r  out  types && npm run b",
+    "clean": "npm update  && npx ismi r  node_modules  package-lock.json &&  npm  install && npm run build ",
+    "test": "npx ismi r  && rollup --config  rollup.config.test.js && node test/out/test/index.mjs",
+    "up": "npx ismi u -n"
+  },
+  "files": [
+    "out",
+    "types"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmssee/js-tools.git"
+  },
+  "author": "lmssee <lmssee@outlook.com>  (https://lmssee.github.io)",
+  "license": "ISC",
+  "keywords": [
+    "ismi",
+    "is-mi",
+    "js-tools",
+    "is-mi-js-tools"
+  ],
+  "homepage": "https://lmssee.github.io/js-tools",
+  "bugs": {
+    "url": "https://github.com/lmssee/js-tools/issues",
+    "email": "lmssee@outlook.com"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.12.10",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
