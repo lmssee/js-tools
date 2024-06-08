@@ -46,7 +46,7 @@ export type TypeOf = "number" | "function" | "string" | "boolean" | "object" | "
  * @return {*}  返回是一个字符串 {@link String}，包含于   @see  {@link TypeOf}
  */
 export function typeOf(o: any): TypeOf {
-    return Object.prototype.toString.call(o).replace(/^.*\s(.*)]$/, "$1").toLowerCase() as TypeOf;
+    return Reflect.apply(Object.prototype.toString, o, []).replace(/^.*\s(.*)]$/, "$1").toLowerCase() as TypeOf;
 }
 
 /**
@@ -59,7 +59,7 @@ export function typeOf(o: any): TypeOf {
  */
 export function debounce(callback: any, delay: number): any {
     let timeout: string | number | NodeJS.Timeout | undefined;
-    return (...args: any) => (clearTimeout(timeout), (timeout = setTimeout(() => callback.apply(null, args), delay)));
+    return (...args: any) => (clearTimeout(timeout), (timeout = setTimeout(() => Reflect.apply(callback, null, args), delay)));
 }
 
 /**
@@ -70,7 +70,7 @@ export function debounce(callback: any, delay: number): any {
  */
 export function throttle(callback: any, delay: number = 200): any {
     let inThrottle = true;
-    return (...args: any) => inThrottle && (callback.apply(null, args), inThrottle = false, setTimeout(() => inThrottle = true, delay));
+    return (...args: any) => inThrottle && (Reflect.apply(callback, null, args), inThrottle = false, setTimeout(() => inThrottle = true, delay));
 }
 
 /** 响应的  */
@@ -97,7 +97,7 @@ function responsive(target: any) {
 
 function Listener(vm: any, expOrFn: any, cb: any) {
     // @ts-ignore 
-    this.vm = vm, this.expOrFn = expOrFn, this.cb = cb, this.cb.call(this.vm, this.evaluate());
+    this.vm = vm, this.expOrFn = expOrFn, this.cb = cb, Reflect.apply(this.cb, this.vm, [this.evaluate()]);
 
 }
 
