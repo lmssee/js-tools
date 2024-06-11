@@ -1,10 +1,11 @@
 ## 打包文件
-cjs/
-es/
-lib/
+cjs
+es
+lib
 ## npm 打包文件
-/out
-/types
+/exportMjs
+/exportCjs
+/exportTypes
 ## 测试打包文件
 /test/out
 

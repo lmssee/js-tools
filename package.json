@@ -1,28 +1,31 @@
 {
-  "name": "ismi-js-tools",
-  "version": "0.0.0",
-  "description": "some  function",
-  "main": "out/index.cjs",
-  "module": "out/index.mjs",
   "type": "module",
-  "typings": "types/index.d.ts",
-  "scripts": {
-    "b": "rollup --config  rollup.config.js    && tsc -p  tsconfig.types.json",
-    "build": "npx ismi r  out  types && npm run b",
-    "clean": "npm update  && npx ismi r  node_modules  package-lock.json &&  npm  install && npm run build ",
-    "test": "npx ismi r  && rollup --config  rollup.config.test.js && node test/out/test/index.mjs",
-    "up": "npx ismi u -n"
-  },
+  "version": "0.0.1",
+  "name": "ismi-js-tools",
+  "main": "exportCjs/index.cjs",
+  "module": "exportMjs/index.mjs",
+  "description": "some  function",
+  "typings": "exportTypes/index.d.ts",
   "files": [
     "out",
     "types"
   ],
+  "exports": {
+    "import": "./exportMjs/index.mjs",
+    "require": "./exportCjs/index.cjs",
+    "types": "./exportTypes/index.d.ts"
+  },
+  "scripts": {
+    "b": "rollup --config rollup.config.js && tsc -p tsconfig.types.json",
+    "build": "npx ixxx r out types run b",
+    "clean": "npx ixxx u -d r node_modules package-lock.json run npm install run build ",
+    "test": "npx ixxx r  && rollup --config  rollup.config.test.js && node test/out/test/index.mjs",
+    "up": "npx ixxx u -n"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lmssee/js-tools.git"
   },
-  "author": "lmssee <lmssee@outlook.com>  (https://lmssee.github.io)",
-  "license": "ISC",
   "keywords": [
     "lmssee",
     "letmiseesee",
@@ -31,7 +34,9 @@
     "js-tools",
     "is-mi-js-tools"
   ],
+  "author": "lmssee <lmssee@outlook.com>  (https://lmssee.github.io)",
   "homepage": "https://lmssee.github.io/js-tools",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/lmssee/js-tools/issues",
     "email": "lmssee@outlook.com"
