@@ -7,8 +7,9 @@
   "description": "some  function",
   "typings": "exportTypes/index.d.ts",
   "files": [
-    "out",
-    "types"
+    "exportCjs/",
+    "exportMjs/",
+    "exportTypes/"
   ],
   "exports": {
     "import": "./exportMjs/index.mjs",
