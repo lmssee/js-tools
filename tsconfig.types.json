@@ -6,5 +6,5 @@
     "declaration": true,
     "declarationDir": "exportTypes/"
   },
-  "exclude": ["node_modules", "test"]
+  "exclude": ["node_modules", "test", "exportTypes/"]
 }

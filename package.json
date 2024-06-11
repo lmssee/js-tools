@@ -1,14 +1,15 @@
 {
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "ismi-js-tools",
   "main": "exportCjs/index.cjs",
   "module": "exportMjs/index.mjs",
   "description": "some  function",
   "typings": "exportTypes/index.d.ts",
   "files": [
-    "out",
-    "types"
+    "exportCjs/",
+    "exportMjs/",
+    "exportTypes/"
   ],
   "exports": {
     "import": "./exportMjs/index.mjs",
@@ -27,10 +28,10 @@
     "url": "git+https://github.com/lmssee/js-tools.git"
   },
   "keywords": [
-    "lmssee",
     "letmiseesee",
-    "ismi",
+    "lmssee",
     "is-mi",
+    "ismi",
     "js-tools",
     "is-mi-js-tools"
   ],
@@ -49,14 +50,14 @@
     "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@types/node": "^20.12.10",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-terser": "^0.4.4",
     "rollup-plugin-cleanup": "^3.2.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "@rollup/plugin-json": "^6.1.0",
+    "@types/node": "^20.12.10",
+    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2"
   }
 }
