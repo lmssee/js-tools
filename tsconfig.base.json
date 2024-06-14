@@ -8,15 +8,10 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "sourceMap": false,
     "resolveJsonModule": true,
     "paths": {},
-    "types": [
-      "node"
-    ]
-  },
+    "types": ["node"]
+  }
 }

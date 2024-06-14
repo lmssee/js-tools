@@ -1,13 +1,10 @@
 export {
-    throttle,
-    debounce,
-    TypeOf,
-    typeOf,
-    getRandomInt,
-    getRandomFloat
+  throttle,
+  debounce,
+  TypeOf,
+  typeOf,
+  getRandomInt,
+  getRandomFloat,
 } from './src/pureFunction';
 
-export {
-    t,
-    isTTY
-} from './src/data';
+export { t, isTTY } from './src/data';
