@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "ismi-js-tools",
   "main": "cjs/index.cjs",
   "module": "mjs/index.mjs",
@@ -23,7 +23,7 @@
     "prettier": "npx prettier . --write",
     "test": "npx ixxx rm && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
     "versionPatch": "npm version patch --force  --no-git-tag-version  --allow-same-version=true",
-    "up": "npx ixxx pkg -u && npm run versionPatch && npm run build  cd dist && npm publish  && cd ../"
+    "up": "npx ixxx pkg -u && npm run versionPatch && npm run build &&  cd dist && npm publish  && cd ../"
   },
   "repository": {
     "type": "git",
