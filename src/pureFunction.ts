@@ -130,13 +130,13 @@ function responsive(target: any) {
  * 监听
  */
 
-function Listener(vm: any, expOrFn: any, cb: any) {
-  // @ts-ignore
-  (this.vm = vm),
-    (this.expOrFn = expOrFn),
-    (this.cb = cb),
-    Reflect.apply(this.cb, this.vm, [this.evaluate()]);
-}
+// function Listener(vm: any, expOrFn: any, cb: any) {
+//   // @ts-ignore
+//   (this.vm = vm),
+//     (this.expOrFn = expOrFn),
+//     (this.cb = cb),
+//     Reflect.apply(this.cb, this.vm, [this.evaluate()]);
+// }
 
 /**
  *

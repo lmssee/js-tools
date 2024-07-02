@@ -9,7 +9,6 @@ lib
 ## 测试打包文件
 /test/out
 
-package-lock.json
 # Logs
 logs
 *.log

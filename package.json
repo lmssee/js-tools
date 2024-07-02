@@ -1,28 +1,29 @@
 {
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "name": "ismi-js-tools",
-  "main": "exportCjs/index.cjs",
-  "module": "exportMjs/index.mjs",
+  "main": "cjs/index.cjs",
+  "module": "mjs/index.mjs",
+  "typings": "types/index.d.ts",
   "description": "some  function",
-  "typings": "exportTypes/index.d.ts",
   "files": [
-    "exportCjs/",
-    "exportMjs/",
-    "exportTypes/"
+    "cjs/",
+    "mjs/",
+    "types/"
   ],
   "exports": {
-    "import": "./exportMjs/index.mjs",
-    "require": "./exportCjs/index.cjs",
-    "types": "./exportTypes/index.d.ts"
+    "import": "./mjs/index.mjs",
+    "require": "./cjs/index.cjs",
+    "types": "./types/index.d.ts"
   },
   "scripts": {
     "b": "rollup --config rollup.config.js && tsc -p tsconfig.types.json",
-    "build": "npx ixxx r out types run b",
-    "clean": "npx ixxx u -d r node_modules package-lock.json run npm install run build",
+    "build": "npx ixxx rm dist run b",
+    "clean": "npx ixxx up -d r node_modules package-lock.json run npm install run build",
     "prettier": "npx prettier . --write",
-    "test": "npx ixxx r && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
-    "up": "npx ixxx u -n"
+    "test": "npx ixxx rm && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
+    "versionPatch": "npm version patch --force  --no-git-tag-version  --allow-same-version=true",
+    "up": "npx ixxx pkg -u && npm run versionPatch && npm run build  cd dist && npm publish  && cd ../"
   },
   "repository": {
     "type": "git",
@@ -48,18 +49,19 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.3"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@types/node": "^20.12.10",
+    "@types/node": "^20.14.9",
     "prettier": "^3.3.2",
     "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-copy": "^3.5.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   }
 }
