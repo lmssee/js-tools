@@ -21,7 +21,7 @@
     "build": "npx ixxx rm dist run b",
     "clean": "npx ixxx up -d r node_modules package-lock.json run npm install run build",
     "prettier": "npx prettier . --write",
-    "test": "npx ixxx rm && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
+    "test": "npx ixxx rm  test/out  && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
     "versionPatch": "npm version patch --force  --no-git-tag-version  --allow-same-version=true",
     "up": "npx ixxx pkg -u && npm run versionPatch && npm run build &&  cd dist && npm publish  && cd ../"
   },
