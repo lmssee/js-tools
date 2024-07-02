@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "name": "ismi-js-tools",
   "main": "cjs/index.cjs",
   "module": "mjs/index.mjs",
@@ -23,7 +23,7 @@
     "prettier": "npx prettier . --write",
     "test": "npx ixxx rm && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
     "versionPatch": "npm version patch --force  --no-git-tag-version  --allow-same-version=true",
-    "up": "npx ixxx pkg -u && npm run versionPatch && npm run build  cd dist && npm publish  && cd ../"
+    "up": "npx ixxx pkg -u && npm run versionPatch && npm run build &&  cd dist && npm publish  && cd ../"
   },
   "repository": {
     "type": "git",
@@ -52,16 +52,21 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.6.0",
     "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.14.9",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.7.0",
     "prettier": "^3.3.2",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-copy": "^3.5.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
   }
 }
