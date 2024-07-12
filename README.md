@@ -1,4 +1,4 @@
-# is-mi-js-tools
+# a-js-tools
 
 A purely functional tool that includes
 
@@ -6,15 +6,12 @@ A purely functional tool that includes
 
 ## language
 
-<table><tr>
-<td><a href="https://github.com/lmssee/js-tools/blob/main/README.md"  target="_self">English</a></td>
-<td><a href="https://github.com/lmssee/js-tools/blob/main/自述文件.md"  target="_self">中文</a></td>
-</tr></table>
+[English](https://github.com/lmssee/js-tools/blob/main/README.md) [中文](https://github.com/lmssee/js-tools/blob/main/自述文件.md)
 
 ## install
 
 ```sh
-npm install   ismi-js-tools  --save
+npm install   a-js-tools  --save
 ```
 
 ## pure function

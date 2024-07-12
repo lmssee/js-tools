@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "version": "0.0.4",
-  "name": "ismi-js-tools",
+  "version": "0.0.0",
+  "name": "a-js-tools",
   "main": "cjs/index.cjs",
   "module": "mjs/index.mjs",
   "typings": "types/index.d.ts",
@@ -21,7 +21,7 @@
     "build": "npx ixxx rm dist run b",
     "clean": "npx ixxx up -d r node_modules package-lock.json run npm install run build",
     "prettier": "npx prettier . --write",
-    "test": "npx ixxx rm && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
+    "test": "npx ixxx rm  test/out  && rollup --config rollup.config.test.js && node test/out/test/index.mjs",
     "versionPatch": "npm version patch --force  --no-git-tag-version  --allow-same-version=true",
     "up": "npx ixxx pkg -u && npm run versionPatch && npm run build &&  cd dist && npm publish  && cd ../"
   },
@@ -30,12 +30,8 @@
     "url": "git+https://github.com/lmssee/js-tools.git"
   },
   "keywords": [
-    "letmiseesee",
-    "lmssee",
-    "is-mi",
-    "ismi",
     "js-tools",
-    "is-mi-js-tools"
+    "a-js-tools"
   ],
   "author": "lmssee <lmssee@outlook.com>  (https://lmssee.github.io)",
   "homepage": "https://lmssee.github.io/js-tools",

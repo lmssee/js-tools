@@ -74,7 +74,7 @@ export type TypeOf =
  * @param {*} o 任意数据
  * @return {*}  返回是一个字符串 {@link String}，包含于   @see  {@link TypeOf}
  */
-export function typeOf(o: any): TypeOf {
+export function typeOf(o: unknown): TypeOf {
   return Reflect.apply(Object.prototype.toString, o, [])
     .replace(/^.*\s(.*)]$/, '$1')
     .toLowerCase() as TypeOf;
@@ -85,15 +85,24 @@ export function typeOf(o: any): TypeOf {
  *
  *  这种设计有一种不好的地方就是倘若最后一次尚未执行，不好清理
  * @param {*} callback
- * @param {number} delay
+ * @param {number} delay 缺省 300 ms
  * @return {*}   返回的是一个函数
  */
-export function debounce(callback: any, delay: number): any {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function debounce<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number = 200,
+): T {
+  // 强制转换非数值
+  if (typeof delay != 'number' || isNaN(delay)) delay = 200;
   let timeout: string | number | NodeJS.Timeout | undefined;
-  return (...args: any) => (
-    clearTimeout(timeout),
-    (timeout = setTimeout(() => Reflect.apply(callback, null, args), delay))
-  );
+  return ((...args: unknown[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(
+      () => Reflect.apply(callback, null, args),
+      Math.max(delay, 0),
+    );
+  }) as T;
 }
 
 /**
@@ -102,29 +111,37 @@ export function debounce(callback: any, delay: number): any {
  * @param delay  延迟时间，单位为毫秒（ms），缺省 200（ms）
  * @returns  返回的是一个函数
  */
-export function throttle(callback: any, delay: number = 200): any {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function throttle<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number = 200,
+): T {
+  // 强制转换非数值
+  if (typeof delay != 'number' || isNaN(delay)) delay = 200;
+  /**  延迟控制插销   */
   let inThrottle = true;
-  return (...args: any) =>
-    inThrottle &&
-    (Reflect.apply(callback, null, args),
-    (inThrottle = false),
-    setTimeout(() => (inThrottle = true), delay));
+  return ((...args: unknown[]) => {
+    if (!inThrottle) return;
+    Reflect.apply(callback, null, args);
+    inThrottle = false;
+    setTimeout(() => (inThrottle = true), Math.max(delay, 0));
+  }) as T;
 }
 
 /** 响应的  */
-function responsive(target: any) {
-  const handle = {
-    get(target: any, key: any, receiver: any) {
-      console.log(`捕获到 key: ${key}`);
-      return Reflect.get(target, key, receiver);
-    },
-    set(target: any, key: any, value: any, receiver: any) {
-      console.log(`设置值 ${value} 到属性 ${key}`);
-      return Reflect.set(target, key, value, receiver);
-    },
-  };
-  return new Proxy(target, handle);
-}
+// function responsive(target: any) {
+//   const handle = {
+//     get(target: any, key: any, receiver: any) {
+//       console.log(`捕获到 key: ${key}`);
+//       return Reflect.get(target, key, receiver);
+//     },
+//     set(target: any, key: any, value: any, receiver: any) {
+//       console.log(`设置值 ${value} 到属性 ${key}`);
+//       return Reflect.set(target, key, value, receiver);
+//     },
+//   };
+//   return new Proxy(target, handle);
+// }
 
 /**
  * 监听
