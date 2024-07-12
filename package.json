@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "version": "0.0.4",
-  "name": "ismi-js-tools",
+  "version": "0.0.0",
+  "name": "a-js-tools",
   "main": "cjs/index.cjs",
   "module": "mjs/index.mjs",
   "typings": "types/index.d.ts",
@@ -30,12 +30,8 @@
     "url": "git+https://github.com/lmssee/js-tools.git"
   },
   "keywords": [
-    "letmiseesee",
-    "lmssee",
-    "is-mi",
-    "ismi",
     "js-tools",
-    "is-mi-js-tools"
+    "a-js-tools"
   ],
   "author": "lmssee <lmssee@outlook.com>  (https://lmssee.github.io)",
   "homepage": "https://lmssee.github.io/js-tools",
