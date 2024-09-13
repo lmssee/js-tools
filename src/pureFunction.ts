@@ -75,9 +75,14 @@ export type TypeOf =
  * @return {*}  返回是一个字符串 {@link String}，包含于   @see  {@link TypeOf}
  */
 export function typeOf(o: unknown): TypeOf {
-  return Reflect.apply(Object.prototype.toString, o, [])
-    .replace(/^.*\s(.*)]$/, '$1')
-    .toLowerCase() as TypeOf;
+  const _t = typeof o;
+  return (
+    (_t !== 'object' && _t) ||
+    (o === null && 'null') ||
+    (Reflect.apply(Object.prototype.toString, o, [])
+      .replace(/^.*\s(.*)]$/, '$1')
+      .toLowerCase() as TypeOf)
+  );
 }
 
 /**
@@ -96,13 +101,16 @@ export function debounce<T extends (...args: any[]) => void>(
   // 强制转换非数值
   if (typeof delay != 'number' || isNaN(delay)) delay = 200;
   let timeout: string | number | NodeJS.Timeout | undefined;
-  return ((...args: unknown[]) => {
-    clearTimeout(timeout);
+  const clear = () => clearTimeout(timeout);
+  function result(...args: unknown[]): void {
+    clear();
     timeout = setTimeout(
       () => Reflect.apply(callback, null, args),
       Math.max(delay, 0),
     );
-  }) as T;
+    result.prototype.clear = clear;
+  }
+  return result as T;
 }
 
 /**
